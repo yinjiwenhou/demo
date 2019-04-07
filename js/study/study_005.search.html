@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Search Box</title>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            .wrapper{
+                width: 800px;
+                margin: 30px auto;
+            }
+
+            ul{
+                list-style: none;
+                overflow: hidden;
+            }
+
+            ul li{
+                float: left;
+                width: 150px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                background-color: #ffffff;
+            }
+
+            li a{
+                text-decoration: none;
+                color: red;
+            }
+
+            li.active{
+                background-color: red;
+            }
+
+            li.active a{
+                color: #ffffff;
+            }
+
+            .search{
+                margin: 20px;
+                position: relative;
+            }
+
+            #txt{
+                display: block;
+                outline: none;
+                width: 800px;
+                height: 50px;
+                position: absolute;
+                border: 3px solid orange;
+                border-radius: 10px;
+            }
+
+            #lab{
+                display: block;
+                position: absolute;
+                top: 15px;
+                left: 30px;
+                font-size: 20px;
+                color: rgba(0, 0, 0, .5);
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <ul>
+                <li class="active"><a href="#">BaoBei</a></li>
+                <li><a href="#">TianMao</a></li>
+                <li><a href="#">DianPu</a></li>
+            </ul>
+            <div class="search">
+                <input type="text" id="txt"/>
+                <label for="txt" id="lab">Please input shangpin</label>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var lis = document.getElementsByTagName('li');
+        for(var i=0; i < lis.length; i++){
+            lis[i].onclick = function(){
+                for(var j=0; j < lis.length; j++){
+                    lis[j].className = '';
+                }
+                this.className = 'active';
+            }
+        }
+
+        var txt = document.getElementById('txt');
+        var lab = document.getElementById('lab');
+        txt.oninput = function(){
+            if(this.value == ''){
+                lab.style.display = 'block';
+            }else{
+                lab.style.display = 'none';
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Close ads after 5s</title>
+        <style type='text/css'>
+            img{
+                width: 200px;
+                height: 600px;
+                position: fixed;
+                top: 0;
+            }
+
+            .pict1{
+                top: 0;
+                right: 0;
+            }
+
+            .pict2{
+                top: 0;
+                left: 0;
+            }
+
+            p{
+                text-align: center;
+                font-size: 30px;
+            }
+
+            span{
+                position: fixed;
+                display: block;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                background-color: rgba(0,0,0,.5);
+                z-index: 10;
+                color: #ffffff;
+            }
+
+            .span1{
+                top: 0px;
+                right: 150px;
+            }
+
+            .span2{
+                top: 0px;
+                left: 150px;
+            }
+        </style>
+       
+    </head>
+
+    <body>
+        <div class="pict">
+            <span class="span1"></span>
+            <img class="pict1" src="ad-001.jpeg" alt="">
+        </div>
+
+        <div class="pict">
+            <span class="span2"></span>
+            <img class="pict2" src="ad-002.jpeg" alt="">
+        </div>
+
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+        <p>guang gao...</p>
+    </body>
+    <script type="text/javascript">
+        window.onload = function(){
+            var picts = document.getElementsByClassName('pict');
+            var spans = document.getElementsByTagName('span');
+            var count = 5;
+
+            time = setInterval(function(){
+                if(count == 0){
+                    for(var i=0; i<spans.length; i++){
+                        spans[i].index = i;
+                        spans[i].innerText = 'x';
+                        spans[i].onclick = function(){
+                            picts[this.index].style.display = 'none';
+                        };
+                    }
+                    clearInterval(time);
+                }
+                else{
+                    spans[0].innerText = count;
+                    spans[1].innerText = count;
+                    count -= 1
+                }
+            }, 1000);
+        };
+    </script>
+</html>

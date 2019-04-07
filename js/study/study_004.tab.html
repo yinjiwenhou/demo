@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Message</title>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            body{
+                height: 100%;
+            }
+
+            .wrapper{
+                width: 600px;
+                border: 1px solid red;
+                margin: 30px auto;
+            }
+
+            ul{
+                list-style: none;
+                overflow: hidden;
+            }
+
+            ul a{
+                display: block;
+                text-decoration: none;
+
+                width: 200px;
+                height: 50px;
+
+                text-align: center;
+                line-height: 50px;
+
+                color: black;
+            }
+
+            ul li{
+                float: left;
+                background-color: rgba(0, 0, 0, .2);
+            }
+
+            p{
+                width: 600px;
+                height: 150px;
+                line-height: 150px;
+                text-align: center;
+                display: none;
+            }
+
+            ul li.active{
+                background-color: #ffffff
+            }
+
+            p.active{
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <ul>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Hots</a></li>
+            </ul>
+            <p id="home" class="active">Home</p>
+            <p id="news">News</p>
+            <p id="hots">Hots</p>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var lis = document.getElementsByTagName('li');
+        var ps = document.getElementsByTagName('p');
+        for(var i=0; i < lis.length; i++){
+            lis[i].index = i;
+            lis[i].onclick = function(){
+                for(var j=0; j<lis.length; j++){
+                    lis[j].className = "";
+                    ps[j].className = "";
+                }
+                this.className = 'active';
+                ps[this.index].className = 'active';
+            }
+        }
+    </script>
+</html>

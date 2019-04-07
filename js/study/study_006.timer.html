@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Timer</title>
+       
+    </head>
+
+    <body>
+        
+    </body>
+    <script type="text/javascript">
+        var oP = document.createElement('p');
+        var body = document.getElementsByTagName('body');
+        body[0].appendChild(oP);
+
+        setInterval(function(){
+            var myDate = new Date();
+            var y = myDate.getFullYear();
+            var m = myDate.getMonth();
+            var d = myDate.getDay();
+
+            var h = myDate.getHours();
+            var min = myDate.getMinutes();
+            var s = myDate.getSeconds();
+            oP.innerHTML = 'Tody is ' + y + "-" + m + '-' + d + ' ' + twoNum(h) + 
+            ":" + twoNum(min) + ":" + twoNum(s);
+        }, 1000);
+
+        function twoNum(n){
+            return n > 10 ? n : '0' + n;
+        }
+    </script>
+</html>

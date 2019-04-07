@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>click</title>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            #surprised{
+                width: 400px;
+                height: 200px;
+
+                font-size: 30px;
+                text-align: center;
+                line-height: 200px;
+
+                margin: 20px auto;
+                color: white;
+                background-color: blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="surprsed">
+            Click for surprise!
+        </div>
+    </body>
+    <script type="text/javascript">
+        var oDiv = document.getElementById('surprsed');
+        var clickTimer = 1;
+
+        oDiv.onclick = function(){
+            switch (clickTimer % 4){
+                case 1:
+                    this.style.backgroundColor = 'green';
+                    this.innerHTML = 'Click again.';
+                    break;
+                case 2:
+                    this.style.backgroundColor = 'orange';
+                    this.innerHTML = 'Once more.';
+                    break;
+                case 3:
+                    this.style.backgroundColor = 'red';
+                    this.innerHTML = 'no more.';
+                    break;
+                default:
+                    this.style.backgroundColor = 'blue';
+                    this.innerHTML = 'Cloick for surprised.'
+            }
+        clickTimer++;
+        }
+    </script>
+</html>

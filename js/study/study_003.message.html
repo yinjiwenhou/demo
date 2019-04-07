@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Message</title>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Simple Message.</h1>
+        <div class="wrapper">
+            <ul id="words"></ul>
+        </div>
+        <textarea id="msg"></textarea>
+        <button id="btn1">Leave Message</button>
+        <button id="btn2" onclick="sum()">summary</button>
+    </body>
+    <script type="text/javascript">
+        var ul = document.getElementById('words');
+        var msg = document.getElementById('msg');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var msgCount = 0;
+
+        btn1.onclick = function(){
+            if(!msg.value){
+                alert("There is no message.")
+            }else{
+                var li = document.createElement('li');
+                li.innerHTML = msg.value + "&nbsp;&nbsp;<span>X</span>";
+
+                if(msgCount == 0){
+                    ul.appendChild(li);
+                    msgCount++;
+                }else{
+                    ul.insertBefore(li, ul.childNodes[0]);
+                    msgCount++;
+                }
+                msg.value = "";
+            }
+            oSpans = document.getElementsByTagName('span');
+            for(var i=0; i < oSpans.length; i++){
+                oSpans[i].onclick = function(){
+                    ul.removeChild(this.parentNode);
+                    msgCount--;
+                }
+            }
+        };
+
+        function sum(){
+            alert('Message count: ' + msgCount);
+        }
+    </script>
+</html>

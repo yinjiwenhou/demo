@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Close ads after 5s</title>
+        <style type='text/css'>
+            #box{
+                position: relative;
+                margin: 50px auto;
+                width: 600px;
+                height: 400px;
+                overflow: hidden;
+            }
+
+            img{
+               position: absolute;
+            }
+
+            span{
+                position: absolute;
+                display: block;
+                width: 600px;
+                height: 200px;
+                background-color: transparent;
+            }
+
+           #upspan{
+               top: 0;
+           }
+
+           #downspan{
+               bottom: 0;
+           }
+        </style>
+       
+    </head>
+
+    <body>
+        <div id="box">
+            <img src="ad-001.jpeg" alt="" id="img1">
+            <span id="upspan"></span>
+            <span id="downspan"></span>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var upspan = document.getElementById('upspan');
+        var downspan = document.getElementById('downspan');
+        var img = document.getElementById('img1');
+        var count = 0;
+        var time = null;
+
+        upspan.onmouseover = function(){
+            console.log("[ up ]on mouse over")
+            clearInterval(time);
+            time = setInterval(function(){
+                count -= 3;
+                count >= -600 ? img.style.top = count + 'px' : clearInterval(time);
+            }, 30);
+        };
+
+        downspan.onmouseover = function(){
+            console.log("[dwon]on mouse over")
+            clearInterval(time);
+            time = setInterval(function(){
+                count += 3;
+                count < 0 ? img.style.top = count + 'px' : clearInterval(time);
+            }, 30);
+        };
+    </script>
+</html>

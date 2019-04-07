@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Move</title>
+        <style type='text/css'>
+            #diamond{
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                position: absolute;
+                left: 0px;
+                top: 50px;
+            }
+        </style>
+       
+    </head>
+
+    <body>
+        <button id="btn">Begin move.</button>
+        <div id="diamond"></div>
+    </body>
+    <script type="text/javascript">
+        var btn = document.getElementById('btn');
+        var dia = document.getElementById('diamond');
+        var count = 0;
+
+        btn.onclick = function(){
+            time = setInterval(function(){
+                count += 10;
+                if(count % 800 == 0){
+                    count = 0;
+                    clearInterval(time);
+                }
+                dia.style.left = count + 'px';
+            }, 10);
+            
+
+        };
+    </script>
+</html>

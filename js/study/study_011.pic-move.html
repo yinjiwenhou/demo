@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Close ads after 5s</title>
+        <style type='text/css'>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+
+            .wrapper{
+                position: relative;
+                width: 800px;
+                height: 300px;
+                margin: 40px auto;
+                background-color: red;
+                overflow: hidden;
+            }
+
+            ul{
+                width: 200%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                list-style: none;
+            }
+
+            ul li{
+                float: left;
+            }
+
+            img{
+                height: 300px;
+                width: 400px;
+            }
+        </style>
+       
+    </head>
+
+    <body>
+        <dic class="wrapper">
+            <ul id="pics">
+                <li><img src="ad-001.jpeg" alt=""></li>
+                <li><img src="ad-002.jpeg" alt=""></li>
+                <li><img src="ad-001.jpeg" alt=""></li>
+                <li><img src="ad-002.jpeg" alt=""></li>
+            </ul>
+        </dic>
+    </body>
+    <script type="text/javascript">
+        var ul = document.getElementById('pics');
+        var count = 0;
+        var time = null;
+
+        function pictureMove(){
+            count -= 1;
+            if(count <= -800){
+                count = 0;
+            }
+            ul.style.left = count + 'px';
+        }
+
+        time = setInterval(pictureMove, 10);
+
+        ul.onmousemove = function(){
+            clearInterval(time);
+        };
+
+        ul.onmouseout = function(){
+            time = setInterval(pictureMove, 10);
+        };
+    </script>
+</html>
