@@ -12,14 +12,17 @@
                 <div class="form-froup">
                     <label for="{{form.username.id}}">{{form.username.label}}</label>
                     {{form.username}}
+                    <span class="help-block">{{form.username.errors.0}}</span>
                 </div>
                 <div class="form-froup">
                     <label for="{{form.password.id}}">{{form.password.label}}</label>
                     {{form.password}}
+                    <span class="help-block">{{form.password.errors.0}}</span>
                 </div>
                 <div class="form-froup">
                         <label for="{{form.password2.id}}">{{form.password2.label}}</label>
                         {{form.password2}}
+                        <span class="help-block">{{form.password2.errors.0}}</span>
                     </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">注册</button>
