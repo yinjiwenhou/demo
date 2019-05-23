@@ -7,19 +7,19 @@ class RegisterForm(forms.Form):
         label="用户名",
         max_length=32,
         min_length=6,
-        widget=forms.TextInput()
+        widget=forms.TextInput(attrs={'class': 'form-control'})
     )
 
     password = forms.CharField(
         label="输入密码",
         min_length=8,
         max_length=32,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
 
     password2 = forms.CharField(
         label="确认密码",
         min_length=8,
         max_length=32,
-        widget=forms.PasswordInput()
+        widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
