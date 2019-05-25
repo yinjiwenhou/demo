@@ -17,7 +17,7 @@ def signup(request):
             send_mail(
                 '注册成功',
                 '',
-                'cugzhangtao@163.com',
+                'xxx@163.com',
                 [form.cleaned_data['email']],
                 html_message='<h2>{user}</h2><hr><p>点击<a href="{url}">此处</a>激活</p>'.format(user=username,url=request.build_absolute_uri(reverse('active')) + '?token='+user_token),
                 fail_silently=False,
