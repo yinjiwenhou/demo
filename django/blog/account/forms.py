@@ -48,3 +48,19 @@ class RegisterForm(UserCreationForm):
             user.save()
         return user
 
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        min_length=6,
+        max_length=32,
+        widget = forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': '请输入用户名'}   
+        )
+    )
+
+    password = forms.CharField(
+        min_length=8,
+        max_length=32,
+        widget = forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': '请输入密码'}
+        )
+    )
