@@ -9,17 +9,22 @@
             <form method="POST" action="." role="form">
                 <legend>填写注册信息</legend>
                 {% csrf_token %}
-                <div class="form-froup">
+                <div class="form-group">
                     <label for="{{form.username.id}}">{{form.username.label}}</label>
                     {{form.username}}
                     <span class="help-block">{{form.username.errors.0}}</span>
                 </div>
-                <div class="form-froup">
-                    <label for="{{form.password.id}}">{{form.password.label}}</label>
-                    {{form.password}}
-                    <span class="help-block">{{form.password.errors.0}}</span>
+                <div class="form-group">
+                    <label for="{{form.email.id}}">{{form.email.label}}</label>
+                    {{form.email}}
+                    <span class="help-block">{{form.email.errors.0}}</span>
                 </div>
-                <div class="form-froup">
+                <div class="form-group">
+                    <label for="{{form.password1.id}}">{{form.password1.label}}</label>
+                    {{form.password1}}
+                    <span class="help-block">{{form.password1.errors.0}}</span>
+                </div>
+                <div class="form-group {% if form.password2.errors %} has-error {% endif%}">
                         <label for="{{form.password2.id}}">{{form.password2.label}}</label>
                         {{form.password2}}
                         <span class="help-block">{{form.password2.errors.0}}</span>
@@ -31,4 +36,15 @@
         </div>
     </div>   
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+    $('.form-group.has-error input').focus(function(){
+        $(this).parent().removeClass("has-error")
+    })
+});
+</script>
+
 {% endblock %}

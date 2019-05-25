@@ -123,6 +123,7 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'account.User'
 
 # 邮件配置
+# Debug: django.core.mail.backends.console.EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.163.com'
