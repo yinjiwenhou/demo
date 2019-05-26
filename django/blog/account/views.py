@@ -56,7 +56,6 @@ def auth_login(request):
         
         print(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
             user = authenticate(username=form.cleaned_data['username'],
                 password=form.cleaned_data['password'])
             if user is not None:
