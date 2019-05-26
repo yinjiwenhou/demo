@@ -2,7 +2,7 @@
 
 {% block title %}index{% endblock %}
 
-{% block content %}
+{% block body %}
 <div class="container">
 
     <div class="col-md-3"></div>
@@ -10,8 +10,11 @@
         {% for post in posts%}
         <h3><a href="">{{ post.title }}</a></h3>
         <p>{{ post.body|truncatewords:30|linebreaks }}</p>
-        <p>Published {{ post.publish }} by {{ post.author }}</p>
+        <p>作者： {{ post.author }}  发布时间： {{ post.publish | date:"Y-m-d" }} </p>
+        <hr>
         {% endfor %}
+
+        {% include 'base/pager.html' with page=posts%}
     </div>
     <div class="col-md-3"></div>
     
