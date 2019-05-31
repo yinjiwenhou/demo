@@ -87,3 +87,16 @@ def auth_login(request):
 def auth_logout(request):
     logout(request)
     return redirect('index')
+
+
+def profile(request, id):
+    user = models.User.objects.get(id=id)
+    if request.method == 'POST':
+        form = forms.ProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+        else:
+            print(form.errors)
+
+    form = forms.ProfileForm(instance=user)
+    return render(request, 'account/profile.html',{'form': form})

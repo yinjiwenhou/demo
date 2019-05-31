@@ -64,3 +64,38 @@ class LoginForm(forms.Form):
             attrs={'class': 'form-control', 'placeholder': '请输入密码'}
         )
     )
+
+
+class ProfileForm(forms.ModelForm):
+    nickname = forms.CharField(
+        label="昵称",
+        min_length=3,
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+
+    avatar = forms.FileField(
+        label="头像",
+        required=False,
+        widget=forms.FileInput
+    )
+
+    mobile = forms.CharField(
+        label="手机",
+        min_length=11,
+        max_length=11,
+        required=False,
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+
+    gender = forms.ChoiceField(
+        label="性别",
+        choices=((1, '男'), (2, '女')),
+        required=False,
+        widget=forms.RadioSelect()
+    )
+
+    class Meta:
+        model = models.User
+        fields = ('nickname', 'avatar', 'mobile', 'gender')
