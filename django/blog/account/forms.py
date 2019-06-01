@@ -50,7 +50,7 @@ class RegisterForm(UserCreationForm):
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        min_length=6,
+        min_length=4,
         max_length=32,
         widget = forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': '请输入用户名'}   
@@ -58,7 +58,7 @@ class LoginForm(forms.Form):
     )
 
     password = forms.CharField(
-        min_length=8,
+        min_length=4,
         max_length=32,
         widget = forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': '请输入密码'}

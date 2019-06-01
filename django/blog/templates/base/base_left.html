@@ -8,10 +8,14 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
+          {% if request.user.avatar %}
           <img src="{{ request.user.avatar.url }}" class="img-circle" alt="User Image" />
+          {% else %}
+          <img src="/media/avatar/avatar.png" class="img-circle" alt="User Image" />
+          {% endif %}
         </div>
         <div class="pull-left info">
-          <p>Hello, {{ request.user.username }}</p>
+          <p>Hello, {{ request.user.nickname }}</p>
 
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
