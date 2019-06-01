@@ -2,52 +2,56 @@
 
 {% block title%}index{% endblock %}
 
-{% block content%}
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Brand</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+{% block header %}
+<header class="header">
+    <a href="index.html" class="logo">
+        Blog
+    </a>
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-           
-            {% if request.user.is_authenticated %}
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">{{request.user }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'profile' id=request.user.id %}">用户中心</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{% url 'logout' %}">退出登陆</a></li>
+                {% if request.user.is_authenticated %}
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span>{{ request.user.username }} <i class="caret"></i></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                        <li class="dropdown-header text-center">用户中心</li>
+                        <li>
+                            <a href="{% url 'profile' id=request.user.id %}">
+                                <i class="fa fa-user fa-fw pull-right"></i>
+                                用户中心
+                            </a>
+                            <a data-toggle="modal" href="#modal-user-settings">
+                                <i class="fa fa-cog fa-fw pull-right"></i>
+                                设置
+                            </a>
+                        </li>
+                        
+                        <li class="divider"></li>
+
+                        <li><a href="{% url 'logout' %}">
+                            <i class="fa fa-ban fa-fw pull-right"></i>
+                            退出登陆
+                        </a></li>
                     </ul>
                 </li>
-            </ul>
-            {% else %}
-            <ul class="nav navbar-nav navbar-right">
+                {% else %}
                 <li><a href="{% url 'signup' %}">注册</a></li>
-                <li><a href="{% url 'login' %}">登陆</a></li>
+                 <li><a href="{% url 'login' %}">登陆</a></li>
+                {% endif %}
             </ul>
-            {% endif %}
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+        </div>
+    </nav>
+</header>
+{% endblock header%}
 
-{% block body %} {% endblock %}
-{% endblock %}
+{% block left %}{% endblock %}
