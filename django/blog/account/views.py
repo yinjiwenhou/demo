@@ -54,7 +54,6 @@ def auth_login(request):
         remember = request.POST.get("remerberme")
         form = forms.LoginForm(data=request.POST)
         
-        print(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'],
                 password=form.cleaned_data['password'])
@@ -80,8 +79,8 @@ def auth_login(request):
     
     return render(request, 'account/login.html', {
         'form': form, 
+        'username': username,
         'next':next, 
-        'username': username, 
         'checked':checked})
 
 def auth_logout(request):
@@ -100,3 +99,19 @@ def profile(request, id):
 
     form = forms.ProfileForm(instance=user)
     return render(request, 'account/profile.html',{'form': form})
+
+def modify_avatar(request, id):
+    user = models.User.objects.get(id=id)
+    print(request.FILES, request.POST)
+    if request.method == 'POST':
+        form = forms.AvatarForm(request.POST,request.FILES, instance=user)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            return redirect('profile',id=id)
+        else:
+            print(form.errors)
+    else:
+        form = forms.AvatarForm(instance=user)
+
+    return render(request, 'account/avatar.html',{'form': form})

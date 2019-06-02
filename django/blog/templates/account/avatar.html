@@ -1,0 +1,46 @@
+{% extends 'base/base_left.html' %}
+
+{% block title%}avatar{% endblock %}
+
+{% block content%}
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+
+        {% if request.user.avatar %}
+        <img id="id_img" src="{{request.user.avatar.url}}" style="width: 200px;height: 200px;" />
+        {% else %}
+        <img id="id_img" src="/media/avatar/avatar.png" style="width: 100px;height: 100px;" />
+        {% endif %}
+
+        <form method="POST" , role="form" , action="." enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{form.avatar.id}}">{{form.avatar.label}}</label>
+                {{form.avatar}}
+                <span class="help-block">{{form.avatar.errors.0}}</span>
+            </div>
+
+            <div class="form-group">
+                <button id="submit_btn" type="submit" class="btn btn-primary">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $("#submit_btn").addClass('disabled');
+
+        $("#id_avatar").change(function () {
+            var fileReader = new FileReader();
+            fileReader.readAsDataURL(this.files[0])
+            fileReader.onload = function(){
+                $('#id_img').attr('src', fileReader.result);
+                $("#submit_btn").removeClass('disabled');
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -75,11 +75,6 @@ class ProfileForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class':'form-control'})
     )
 
-    avatar = forms.FileField(
-        label="头像",
-        required=False,
-        widget=forms.FileInput
-    )
 
     mobile = forms.CharField(
         label="手机",
@@ -98,4 +93,15 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = models.User
-        fields = ('nickname', 'avatar', 'mobile', 'gender')
+        fields = ('nickname', 'mobile', 'gender')
+
+
+class AvatarForm(forms.ModelForm):
+    avatar = forms.FileField(
+        label="头像",
+        widget=forms.FileInput()
+    )
+
+    class Meta:
+        model = models.User
+        fields = ('avatar',)
