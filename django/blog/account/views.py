@@ -102,11 +102,10 @@ def profile(request, id):
 
 def modify_avatar(request, id):
     user = models.User.objects.get(id=id)
-    print(request.FILES, request.POST)
+
     if request.method == 'POST':
         form = forms.AvatarForm(request.POST,request.FILES, instance=user)
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
             return redirect('profile',id=id)
         else:
